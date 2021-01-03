@@ -1,64 +1,80 @@
 <!DOCTYPE html>
 <html lang="en-us">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Rock Paper Scissors!</title>
-    </head>
 
-    <style>
-        h1 {
-            border-bottom: 2px ridge #ddd;
-            text-align: center;
-            padding-bottom: 20px;
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors!</title>
+</head>
+
+<style>
+    h1 {
+        border-bottom: 2px ridge #ddd;
+        text-align: center;
+        padding-bottom: 20px;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    p:nth-of-type(4) {
+        margin-left: 15px;
+    }
+
+    strong {
+        border: 1px solid #333;
+        padding: 2px;
+    }
+
+    .container {
+        max-width: 540px;
+        border: 1px solid #ddd;
+        margin: 0 auto;
+        padding: 30px;
+    }
+</style>
+
+<body>
+
+    <h1>Rock Paper Scissors!</h1>
+    <p><strong>Please click R, P, S to start:</strong></p>
+    <p><strong>R</strong> = Rock</p>
+    <p><strong>P</strong> = Paper</p>
+    <p><strong>S</strong> = Scissors</p>
+    <div class="container">
+        <h2>You Picked: <span id="user-guess"></span></h2>
+        <h2>CPU Picked: <span id="cpu-guess"></span></h2>
+    </div>
+
+
+
+
+    <script type="text/javascript">
+        var userGuess = document.getElementById("user-guess")
+        var cpuGuess = document.getElementById("cpu-guess");
+
+        document.onkeyup = function (event) {
+            var userInput = event.key.toLocaleLowerCase();
+
+            if (userInput === "r") {
+                userGuess.innerText = "Rock!";
+            } 
+            else if (userInput === "p") {
+                userGuess.innerText = "Paper!";
+            }
+            else if (userInput === "s") {
+                userGuess.innerText = "Scissors!"
+            }
+            else {
+                userGuess.innerText = "Invalid Input! Type r, p, or s!"
+            }
         }
-        
-        p
-         {
-            text-align: center;
-        }
-
-        p:nth-of-type(4) {
-            margin-left: 15px;
-        }
-        strong {
-            border: 1px solid #333;
-            padding: 2px;
-        }
-
-        .container {
-            max-width: 540px;
-            border: 1px solid #ddd;
-            margin: 0 auto;
-            padding: 30px;
-        }
-    </style>
-
-    <body>
-
-        <h1>Rock Paper Scissors!</h1>
-        <p><strong>Please click R, P, S to start:</strong></p>
-        <p><strong>R</strong> = Rock</p>
-        <p><strong>P</strong> = Paper</p>
-        <p><strong>S</strong> = Scissors</p>
-        <div class="container">
-            <h2>You Picked: <span id="user-guess"></span></h2>
-            <h2>CPU Picked: <span id="cpu-guess"></span></h2>
-        </div>
-        
 
 
 
-        <script type="text/javascript">
-        var userGuess = document.getElementById("user-guess");
 
-        document.onkeyup = function(event) {
-            userGuess.textContent = event.key;
-        }
-        
-        
-        
-        
-        </script>
-    </body>
+    </script>
+</body>
+
 </html>

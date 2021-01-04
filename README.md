@@ -1,5 +1,5 @@
 # Rock-Paper-Scissors-JS
-<p><Play Rock, Paper, Scissors against a CPU <a href="https://bksaechao.github.io/Rock-Paper-Scissors-JS/">here</a>!</p>
+<p>Play Rock, Paper, Scissors against a CPU <a href="https://bksaechao.github.io/Rock-Paper-Scissors-JS/">here</a>!</p>
 <img src="assets/images/rpsGif.gif" alt="rpsGif" height="250" width="550">
 
 ## Javascript Practice Challenge

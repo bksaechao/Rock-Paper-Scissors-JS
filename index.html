@@ -51,20 +51,28 @@
 
 
     <script type="text/javascript">
-        var userGuess = document.getElementById("user-guess")
+        var userGuess = document.getElementById("user-guess");
         var cpuGuess = document.getElementById("cpu-guess");
+        var rpsArray = ["Rock!", "Paper!", "Scissors!"];
+
+        function cpuPick() {
+            return rpsArray[Math.floor(Math.random()*rpsArray.length)];
+        }
 
         document.onkeyup = function (event) {
             var userInput = event.key.toLocaleLowerCase();
 
             if (userInput === "r") {
-                userGuess.innerText = "Rock!";
-            } 
+                userGuess.innerText = "Rock!"
+                cpuGuess.innerText = cpuPick();
+            }
             else if (userInput === "p") {
-                userGuess.innerText = "Paper!";
+                userGuess.innerText = "Paper!"
+                cpuGuess.innerText = cpuPick();
             }
             else if (userInput === "s") {
                 userGuess.innerText = "Scissors!"
+                cpuGuess.innerText = cpuPick();
             }
             else {
                 userGuess.innerText = "Invalid Input! Type r, p, or s!"

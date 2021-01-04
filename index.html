@@ -35,6 +35,10 @@
         overflow: hidden;
     }
 
+    .container:nth-of-type(2) {
+        margin-top: 20px;
+    }
+
     .game-content {
         float: left;
     }
@@ -42,11 +46,32 @@
     .result-div {
         float: right;
     }
+
+    table {
+        width: 100%;
+        border: 1px solid cornflowerblue;
+        border-top: none;
+    }
+
+    .wlt {
+        border: 1px solid cornflowerblue;
+    }
+
+    .user-name {
+        text-align: center;
+        border: 1px solid cornflowerblue;
+        margin: 0;
+    }
+
+    td {
+        text-align: center;
+        font-weight: 700;
+    }
 </style>
 
 <body>
 
-    <h1 class="mast-head">Rock Paper Scissors!</h1>
+    <h1>Rock Paper Scissors!</h1>
     <p><strong>Please click R, P, S to start:</strong></p>
     <p><strong>R</strong> = Rock</p>
     <p><strong>P</strong> = Paper</p>
@@ -59,6 +84,22 @@
         <div class="result-div">
             <h1 id="result"></h1>
         </div>
+    </div>
+    <div class="container">
+        <h2 class="user-name">Brian</h2>
+        <table>
+            <tr>
+                <th class="wlt">win</th>
+                <th class="wlt">Loss</th>
+                <th class="wlt">Tie</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+            </tr>
+        </table>
+
     </div>
 
 
@@ -113,7 +154,7 @@
             else if (userInput === "r" && cpuPick === "r") {
                 userResult.innerText = "It's a Tie!";
             }
-            
+
 
             if (userInput === "p" && cpuPick === "r") {
                 userResult.innerText = "You Won!";

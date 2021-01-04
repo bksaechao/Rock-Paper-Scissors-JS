@@ -62,7 +62,7 @@
         font-size: 25px;
     }
 
-    .user-name {
+    #user-name {
         text-align: center;
         border: 1px solid cornflowerblue;
         margin: 0;
@@ -74,7 +74,7 @@
     }
 </style>
 
-<body>
+<body id="body">
 
     <h1>Rock Paper Scissors!</h1>
     <p><strong>Please click R, P, S to start:</strong></p>
@@ -91,7 +91,7 @@
         </div>
     </div>
     <div class="container">
-        <h2 class="user-name">Brian</h2>
+        <h2 id="user-name"></h2>
         <table>
             <tr>
                 <th class="wlt">Win</th>
@@ -99,9 +99,9 @@
                 <th class="wlt">Tie</th>
             </tr>
             <tr>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
+                <td id="win"></td>
+                <td id="loss"></td>
+                <td id="tie"></td>
             </tr>
         </table>
 
@@ -114,12 +114,23 @@
         var userGuess = document.getElementById("user-guess");
         var cpuGuess = document.getElementById("cpu-guess");
         var userResult = document.getElementById("result");
+        var userName = document.getElementById("user-name");
+        var body = document.getElementById("body");
         var rpsArray = ["r", "p", "s"];
+
+        var askName = prompt("Hey! Let's play Rock Paper Scissors! What's your name?")
+        if (askName) {
+            userName.innerText = askName
+        }
+
+
 
         document.onkeyup = function (event) {
             var userInput = event.key.toLocaleLowerCase();
             var cpuPick = rpsArray[Math.floor(Math.random() * rpsArray.length)];
 
+            cpuGuess.innerText ="";
+            userResult.innerText="";
             //User & CPU picker Logic
             if (userInput === "r") {
                 userGuess.innerText = "Rock!";
@@ -138,26 +149,38 @@
             console.log("User Guess: " + userGuess.innerText);
 
             if (cpuPick === "r") {
-                cpuGuess.innerText = "Rock!";
+                setTimeout(function() {
+                    cpuGuess.innerText = "Rock!";
+                }, 2000)
             }
             else if (cpuPick === "p") {
-                cpuGuess.innerText = "Paper!";
+                setTimeout(function() {
+                    cpuGuess.innerText = "Paper!";
+                }, 2000)
             }
             else if (cpuPick === "s") {
-                cpuGuess.innerText = "Scissors!";
+                setTimeout(function() {
+                    cpuGuess.innerText = "Scissors!";
+                }, 2000)
             }
             else { }
             console.log("CPU Guess: " + cpuGuess.innerText);
 
             // Win Lose Logic
             if (userInput === "r" && cpuPick === "s") {
-                userResult.innerText = "You Won!";
+                setTimeout(function() {
+                    userResult.innerText = "You Won!";
+                }, 2500)
             }
             else if (userInput === "r" && cpuPick === "p") {
-                userResult.innerText = "You Lost!";
+                setTimeout(function() {
+                    userResult.innerText = "You Lost!";
+                }, 2500)
             }
             else if (userInput === "r" && cpuPick === "r") {
-                userResult.innerText = "It's a Tie!";
+                setTimeout(function() {
+                    userResult.innerText = "Its a Tie!";
+                }, 2500)
             }
 
 

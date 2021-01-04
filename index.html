@@ -69,7 +69,7 @@
         var cpuGuess = document.getElementById("cpu-guess");
         var userResult = document.getElementById("result");
         var rpsArray = ["r", "p", "s"];
-    
+
         document.onkeyup = function (event) {
             var userInput = event.key.toLocaleLowerCase();
             var cpuPick = rpsArray[Math.floor(Math.random() * rpsArray.length)];
@@ -86,7 +86,8 @@
             }
             else {
                 userGuess.innerText = "Invalid Input! Type r, p, or s!";
-                cpuGuess.innerText = ""
+                cpuGuess.innerText = "";
+                userResult.innerText = "";
             }
             console.log("User Guess: " + userGuess.innerText);
 
@@ -99,7 +100,7 @@
             else if (cpuPick === "s") {
                 cpuGuess.innerText = "Scissors!";
             }
-            else {}
+            else { }
             console.log("CPU Guess: " + cpuGuess.innerText);
 
             // Win Lose Logic
@@ -112,6 +113,28 @@
             else if (userInput === "r" && cpuPick === "r") {
                 userResult.innerText = "It's a Tie!";
             }
+            
+
+            if (userInput === "p" && cpuPick === "r") {
+                userResult.innerText = "You Won!";
+            }
+            else if (userInput === "p" && cpuPick === "s") {
+                userResult.innerText = "You Lost!";
+            }
+            else if (userInput === "p" && cpuPick === "p") {
+                userResult.innerText = "It's a Tie!";
+            }
+
+            if (userInput === "s" && cpuPick === "p") {
+                userResult.innerText = "You Won!";
+            }
+            else if (userInput === "s" && cpuPick === "r") {
+                userResult.innerText = "You Lost!";
+            }
+            else if (userInput === "s" && cpuPick === "s") {
+                userResult.innerText = "It's a Tie!";
+            }
+            console.log(userResult.innerText);
         }
 
     </script>

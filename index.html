@@ -81,36 +81,36 @@
 </style>
 
 <body>
-
-    <h1 class="mast-head">Rock Paper Scissors!</h1>
-    <p><strong>Please click R, P, S to start:</strong></p>
-    <p><strong>R</strong> = Rock</p>
-    <p><strong>P</strong> = Paper</p>
-    <p><strong>S</strong> = Scissors</p>
-    <div class="container">
-        <div class="game-content">
-            <h2>You Picked: <span id="user-guess"></span></h2>
-            <h2>CPU Picked: <span id="cpu-guess"></span></h2>
+    <div id="wrapper">
+        <h1 class="mast-head">Rock Paper Scissors!</h1>
+        <p><strong>Please click R, P, S to start:</strong></p>
+        <p><strong>R</strong> = Rock</p>
+        <p><strong>P</strong> = Paper</p>
+        <p><strong>S</strong> = Scissors</p>
+        <div class="container">
+            <div class="game-content">
+                <h2>You Picked: <span id="user-guess"></span></h2>
+                <h2>CPU Picked: <span id="cpu-guess"></span></h2>
+            </div>
+            <div class="result-div">
+                <h1 id="result"></h1>
+            </div>
         </div>
-        <div class="result-div">
-            <h1 id="result"></h1>
+        <div class="container">
+            <h2 id="user-name"></h2>
+            <table>
+                <tr>
+                    <th class="wlt">Win</th>
+                    <th class="wlt">Loss</th>
+                    <th class="wlt">Tie</th>
+                </tr>
+                <tr>
+                    <td id="win"></td>
+                    <td id="loss"></td>
+                    <td id="tie"></td>
+                </tr>
+            </table>
         </div>
-    </div>
-    <div class="container">
-        <h2 id="user-name"></h2>
-        <table>
-            <tr>
-                <th class="wlt">Win</th>
-                <th class="wlt">Loss</th>
-                <th class="wlt">Tie</th>
-            </tr>
-            <tr>
-                <td id="win"></td>
-                <td id="loss"></td>
-                <td id="tie"></td>
-            </tr>
-        </table>
-
     </div>
 
 
@@ -121,11 +121,18 @@
         var cpuGuess = document.getElementById("cpu-guess");
         var userResult = document.getElementById("result");
         var userName = document.getElementById("user-name");
+        var wrapper = document.getElementById("wrapper");
         var rpsArray = ["r", "p", "s"];
 
-        var askName = prompt("Hey! Let's play Rock Paper Scissors! What's your name?")
-        if (askName) {
-            userName.innerText = askName
+        var greeting = confirm("Hey! Let's Play Rock Paper Scissors!")
+        if (greeting) {
+            var askName = prompt("Awesome! What's your name?")
+            if (askName) {
+                userName.innerText = askName
+            }
+        } else {
+            wrapper.style.display = "none";
+            document.write("Aww...Refresh the page to try again!")
         }
 
         let win = 0
@@ -177,7 +184,6 @@
                 }, 2000)
             }
             else { }
-            console.log("CPU Guess: " + cpuGuess.innerText);
 
             // Win Lose Logic
             if (userInput === "r" && cpuPick === "s") {
@@ -264,7 +270,7 @@
                     document.getElementById("tie").innerText = tie;
                 }, 3000)
             }
-            console.log(userResult.innerText);
+
         }
 
     </script>

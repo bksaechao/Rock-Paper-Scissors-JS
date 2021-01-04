@@ -1,0 +1,83 @@
+    body {
+        font-family: 'V323', monospace;
+    }
+
+    #wrapper {
+        display: none;
+    }
+
+    .mast-head {
+        border-bottom: 2px ridge #ddd;
+        text-align: center;
+        padding-bottom: 20px;
+        font-family: 'Rock Salt', cursive;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    p:nth-of-type(4) {
+        margin-left: 15px;
+    }
+
+    strong {
+        border: 1px solid #333;
+        padding: 2px;
+    }
+
+    .container {
+        max-width: 540px;
+        border: 1px solid #ddd;
+        margin: 0 auto;
+        padding: 30px;
+        overflow: hidden;
+    }
+
+    .container:nth-of-type(2) {
+        margin-top: 20px;
+    }
+
+    .game-content {
+        float: left;
+    }
+
+    .result-div {
+        float: right;
+    }
+
+    table {
+        width: 100%;
+        border: 1px solid cornflowerblue;
+        border-top: none;
+        padding: 5px;
+    }
+
+    .wlt {
+        border: 1px solid cornflowerblue;
+        font-family: 'VT323', monospace;
+        font-size: 25px;
+    }
+
+    #user-name {
+        text-align: center;
+        border: 1px solid cornflowerblue;
+        margin: 0;
+    }
+
+    #reset {
+        width: 100%;
+        font-family: 'Rock Salt', cursive;
+    }
+
+    #play {
+        font-family: 'Press Start 2P', cursive;
+        padding: 10px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    td {
+        text-align: center;
+        font-family: 'Press Start 2P', cursive;
+    }

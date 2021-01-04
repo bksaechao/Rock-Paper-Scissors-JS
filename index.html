@@ -6,14 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors!</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rock+Salt&family=VT323&display=swap"
+        rel="stylesheet">
 </head>
 
 <style>
+    body {
+        font-family: 'V323', monospace;
+    }
+
     .mast-head {
         border-bottom: 2px ridge #ddd;
         text-align: center;
         padding-bottom: 20px;
+        font-family: 'Rock Salt', cursive;
     }
 
     p {
@@ -151,7 +157,7 @@
             else {
                 userGuess.innerText = "Invalid Input! Type r, p, or s!";
                 cpuGuess.innerText = "";
-                userResult.innerText = "";
+                return
             }
             console.log("User Guess: " + userGuess.innerText);
 

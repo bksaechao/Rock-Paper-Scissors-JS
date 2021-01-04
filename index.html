@@ -74,6 +74,17 @@
         margin: 0;
     }
 
+    #reset {
+        width: 100%;
+        font-family: 'Rock Salt', cursive;
+    }
+    
+    #play {
+        font-family: 'Press Start 2P', cursive;
+        padding: 10px;
+        display: none;
+    }
+
     td {
         text-align: center;
         font-family: 'Press Start 2P', cursive;
@@ -81,6 +92,7 @@
 </style>
 
 <body>
+    <button id="play">Click Here To Play!</button>
     <div id="wrapper">
         <h1 class="mast-head">Rock Paper Scissors!</h1>
         <p><strong>Please click R, P, S to start:</strong></p>
@@ -110,6 +122,7 @@
                     <td id="tie"></td>
                 </tr>
             </table>
+            <button id="reset">Reset Score</button>
         </div>
     </div>
 
@@ -122,17 +135,19 @@
         var userResult = document.getElementById("result");
         var userName = document.getElementById("user-name");
         var wrapper = document.getElementById("wrapper");
+        var resetScore = document.getElementById("reset");
+        var play = document.getElementById("play");
         var rpsArray = ["r", "p", "s"];
 
-        var greeting = confirm("Hey! Let's Play Rock Paper Scissors!")
-        if (greeting) {
-            var askName = prompt("Awesome! What's your name?")
-            if (askName) {
-                userName.innerText = askName
+        var isPlaying = confirm("Hey! Let's Play Rock Paper Scissors!")
+        if (isPlaying) {
+            var hasName = prompt("Awesome! What's your name?")
+            if (hasName) {
+                userName.innerText = hasName
             }
         } else {
             wrapper.style.display = "none";
-            document.write("Aww...Refresh the page to try again!")
+            play.style.display = "block";
         }
 
         let win = 0
@@ -142,6 +157,23 @@
         document.getElementById("win").innerText = win;
         document.getElementById("loss").innerText = loss;
         document.getElementById("tie").innerText = tie;
+
+        play.onclick = function (event) {
+            window.location.reload();
+        }
+
+        resetScore.onclick = function (event) {
+            event.preventDefault();
+            win = 0
+            loss = 0
+            tie = 0
+            document.getElementById("win").innerText = win;
+            document.getElementById("loss").innerText = loss;
+            document.getElementById("tie").innerText = tie;
+            userGuess.innerText = "";
+            cpuGuess.innerText = "";
+            userResult.innerText = "";
+        }
 
         document.onkeyup = function (event) {
             var userInput = event.key.toLocaleLowerCase();
@@ -213,7 +245,6 @@
                     document.getElementById("tie").innerText = tie;
                 }, 3000)
             }
-
 
             if (userInput === "p" && cpuPick === "r") {
                 setTimeout(function () {

@@ -15,6 +15,10 @@
         font-family: 'V323', monospace;
     }
 
+    #wrapper {
+        display: none;
+    }
+
     .mast-head {
         border-bottom: 2px ridge #ddd;
         text-align: center;
@@ -82,7 +86,8 @@
     #play {
         font-family: 'Press Start 2P', cursive;
         padding: 10px;
-        display: none;
+        display: block;
+        margin: 0 auto;
     }
 
     td {
@@ -92,9 +97,9 @@
 </style>
 
 <body>
+    <h1 class="mast-head">Rock Paper Scissors!</h1>
     <button id="play">Click Here To Play!</button>
     <div id="wrapper">
-        <h1 class="mast-head">Rock Paper Scissors!</h1>
         <p><strong>Please click R, P, S to start:</strong></p>
         <p><strong>R</strong> = Rock</p>
         <p><strong>P</strong> = Paper</p>
@@ -139,23 +144,19 @@
         var play = document.getElementById("play");
         var rpsArray = ["r", "p", "s"];
 
-
-        var isPlaying = confirm("Hey! Let's Play Rock Paper Scissors!")
-        if (isPlaying) {
-            var hasName = prompt("Awesome! What's your name?")
+        play.onclick = function (event) {
+            var hasName = prompt("What's your name?")
             if (hasName === "") {
                 alert("Please enter in a name!")
-                terminate();
             }
             else if (!hasName) {
-                terminate();
+                return
             }
             else {
                 userName.innerText = hasName
+                play.style.display = "none";
+                wrapper.style.display = "block";
             }
-        }
-        else {
-            terminate();
         }
 
         let win = 0
@@ -165,10 +166,6 @@
         document.getElementById("win").innerText = win;
         document.getElementById("loss").innerText = loss;
         document.getElementById("tie").innerText = tie;
-
-        play.onclick = function (event) {
-            window.location.reload();
-        }
 
         resetScore.onclick = function (event) {
             event.preventDefault();
@@ -181,11 +178,6 @@
             userGuess.innerText = "";
             cpuGuess.innerText = "";
             userResult.innerText = "";
-        }
-
-        function terminate() {
-            wrapper.style.display = "none";
-            play.style.display = "block";
         }
 
         document.onkeyup = function (event) {

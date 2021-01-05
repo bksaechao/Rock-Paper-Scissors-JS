@@ -7,10 +7,19 @@ var resetScore = document.getElementById("reset");
 var play = document.getElementById("play");
 var rpsArray = ["r", "p", "s"];
 
+let win = 0
+let loss = 0
+let tie = 0
+
+document.getElementById("win").innerText = win;
+document.getElementById("loss").innerText = loss;
+document.getElementById("tie").innerText = tie;
+
 play.onclick = function (event) {
+    event.preventDefault();
     var hasName = prompt("What's your name?")
     if (hasName === "") {
-        alert("Please enter in a name!")
+        alert("Please enter a valid name!")
     }
     else if (!hasName) {
         return
@@ -21,14 +30,6 @@ play.onclick = function (event) {
         wrapper.style.display = "block";
     }
 }
-
-let win = 0
-let loss = 0
-let tie = 0
-
-document.getElementById("win").innerText = win;
-document.getElementById("loss").innerText = loss;
-document.getElementById("tie").innerText = tie;
 
 resetScore.onclick = function (event) {
     event.preventDefault();
@@ -42,6 +43,7 @@ resetScore.onclick = function (event) {
     cpuGuess.innerText = "";
     userResult.innerText = "";
 }
+
 
 document.onkeyup = function (event) {
     var userInput = event.key.toLocaleLowerCase();
@@ -84,89 +86,37 @@ document.onkeyup = function (event) {
         }, 2000)
     }
     else { }
-
+    
     // Win Lose Logic
-    if (userInput === "r" && cpuPick === "s") {
-        setTimeout(function () {
-            userResult.innerText = "You Won!";
-        }, 2500)
-        win++
-        setTimeout(function () {
-            document.getElementById("win").innerText = win;
-        }, 3000)
-    }
-    else if (userInput === "r" && cpuPick === "p") {
-        setTimeout(function () {
-            userResult.innerText = "You Lost!";
-        }, 2500)
-        loss++
-        setTimeout(function () {
-            document.getElementById("loss").innerText = loss;
-        }, 3000)
-    }
-    else if (userInput === "r" && cpuPick === "r") {
-        setTimeout(function () {
-            userResult.innerText = "Its a Tie!";
-        }, 2500)
-        tie++
-        setTimeout(function () {
-            document.getElementById("tie").innerText = tie;
-        }, 3000)
-    }
+    if ((userInput === "r") || (userInput === "p") || (userInput === "s")) {
 
-    if (userInput === "p" && cpuPick === "r") {
-        setTimeout(function () {
-            userResult.innerText = "You Won!";
-        }, 2500)
-        win++
-        setTimeout(function () {
-            document.getElementById("win").innerText = win;
-        }, 3000)
-    }
-    else if (userInput === "p" && cpuPick === "s") {
-        setTimeout(function () {
-            userResult.innerText = "You Lost!";
-        }, 2500)
-        loss++
-        setTimeout(function () {
-            document.getElementById("loss").innerText = loss;
-        }, 3000)
-    }
-    else if (userInput === "p" && cpuPick === "p") {
-        setTimeout(function () {
-            userResult.innerText = "Its a Tie!";
-        }, 2500)
-        tie++
-        setTimeout(function () {
-            document.getElementById("tie").innerText = tie;
-        }, 3000)
-    }
+        if ((userInput === "r" && cpuPick === "s") ||
+            (userInput === "p" && cpuPick === "r") ||
+            (userInput === "s" && cpuPick === "p")) {
+            setTimeout(function () {
+                userResult.innerText = "You Won!";
+            }, 2500)
+            win++
+            setTimeout(function () {
+                document.getElementById("win").innerText = win;
+            }, 3000)
+        } else if (userInput === cpuPick) {
+            setTimeout(function () {
+                userResult.innerText = "Its a Tie!";
+            }, 2500)
+            tie++
+            setTimeout(function () {
+                document.getElementById("tie").innerText = tie;
+            }, 3000)
+        } else {
+            setTimeout(function () {
+                userResult.innerText = "You Lost!";
+            }, 2500)
+            loss++
+            setTimeout(function () {
+                document.getElementById("loss").innerText = loss;
+            }, 3000)
+        }
 
-    if (userInput === "s" && cpuPick === "p") {
-        setTimeout(function () {
-            userResult.innerText = "You Won!";
-        }, 2500)
-        win++
-        setTimeout(function () {
-            document.getElementById("win").innerText = win;
-        }, 3000)
-    }
-    else if (userInput === "s" && cpuPick === "r") {
-        setTimeout(function () {
-            userResult.innerText = "You Lost!";
-        }, 2500)
-        loss++
-        setTimeout(function () {
-            document.getElementById("loss").innerText = loss;
-        }, 3000)
-    }
-    else if (userInput === "s" && cpuPick === "s") {
-        setTimeout(function () {
-            userResult.innerText = "Its a Tie!";
-        }, 2500)
-        tie++
-        setTimeout(function () {
-            document.getElementById("tie").innerText = tie;
-        }, 3000)
     }
 }
